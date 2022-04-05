@@ -11,45 +11,45 @@ class Tile
 {
     constructor(i, j, n)
     {
-    this.row = i
-   this.col = j
-    this.val = n
+        this.row = i
+        this.col = j
+        this.val = n
     }
 
     draw()
     {
-         if(this.val)
-         {
+        if(this.val)
+        {
             ctx.fillStyle = tileColor
             ctx.strokeStyle = canvasColor
             ctx.linewidth = 5
             ctx.fillRect(this.col * tileWidth, this.row * tileHeight, tileWidth, tileHeight)
             ctx.strokeRect(this.col * tileWidth, this.row * tileHeight, tileWidth, tileHeight)
-            ctx.font =`${tileWidth * 0.6}px Arial`
-            ctx.fillStyle = 'blue'
+            ctx.font = `${tileWidth * 0.6}px Arial`
+            ctx.fillStyle = "blue"
             ctx.textAlign = 'center'
-            ctx.textBaseline = 'middle'
-            ctx.fillText(this.val, this.col * tileWidth + tileWidth / 2, this.row * tileWidth + tileWidth / 2)
-            }
-     }
+            ctx.textBaseline = "middle"
+            ctx.fillText(this.val, this.col * tileWidth + tileWidth / 2, this.row * tileHeight + tileHeight / 2)
+        }
+    }
 }
 
 
 export class GameView
 {
- constructor(state)
-{
-ctx.clearRect(0, 0, canvas.width, canvas.height)
-this.board = [new Array(d), new Array(d), new Array(d)]
-for(let i = 0; i < d; i++)
-{
-for(let j = 0; j < d; j++)
-{
-    this.board[i][j] = new Tile(i, j, state[i][j])
-    this.board[i][j].draw()
-}
-}
-}
+    constructor(state)
+    {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        this.board = [new Array(d), new Array(d), new Array(d)]
+        for(let i = 0; i < d; i++)
+        {
+            for(let j = 0; j < d; j++)
+            {
+                this.board[i][j] = new Tile(i, j, state[i][j])
+                this.board[i][j].draw()
+            }
+        }
+    }
 }
 
 export function clickToTail(x, y)
